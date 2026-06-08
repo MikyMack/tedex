@@ -933,7 +933,7 @@ blockquote b {
 }
 
 .tmp-section-gapBottom {
-  padding-bottom: 120px;
+  padding-bottom: 60px;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .tmp-section-gapBottom {

@@ -1,0 +1,506 @@
+/* ================================
+   Speakers — dark theme
+   ================================ */
+
+.speakers-section {
+  background: #0a0a0a;
+}
+
+.speakers-section .title,
+.speakers-section .subtitle,
+.speakers-section .description {
+  color: #fff;
+}
+
+.speakers-section .description {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.speakers-section__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.speaker-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #111;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+}
+
+.speaker-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(235, 0, 40, 0.2);
+  border-color: rgba(235, 0, 40, 0.3);
+}
+
+.speaker-card__img-wrap {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+
+.speaker-card__img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.speaker-card:hover .speaker-card__img-wrap img {
+  transform: scale(1.05);
+}
+
+.speaker-card__img-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.15) 55%, transparent 100%);
+}
+
+.speaker-card__placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 3rem;
+}
+
+.speaker-card__body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.25rem;
+  z-index: 2;
+}
+
+.speaker-card__name {
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  line-height: 1.3;
+}
+
+.speaker-card__title {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.82rem;
+  line-height: 1.4;
+  margin-bottom: 0.65rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.speaker-card__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #eb0028;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.speaker-card--teaser {
+  background: linear-gradient(135deg, #111, #1a0a0e);
+  border: 1px solid rgba(235, 0, 40, 0.2);
+  cursor: default;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.speaker-card--teaser:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.speaker-card--teaser i {
+  font-size: 2.5rem;
+  color: #eb0028;
+  margin-bottom: 1rem;
+}
+
+.speaker-card--teaser h3 {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.speaker-card--teaser p {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Speaker modal — dark */
+.speaker-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.speaker-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.speaker-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(6px);
+}
+
+.speaker-modal__dialog {
+  position: relative;
+  background: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  max-width: 720px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+  animation: speakerModalIn 0.35s ease;
+}
+
+@keyframes speakerModalIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+.speaker-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.speaker-modal__close:hover {
+  background: #eb0028;
+  border-color: #eb0028;
+  color: #fff;
+}
+
+.speaker-modal__header {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.75rem;
+  align-items: flex-start;
+}
+
+.speaker-modal__photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 14px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.speaker-modal__photo-placeholder {
+  width: 120px;
+  height: 120px;
+  border-radius: 14px;
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.speaker-modal__name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.35rem;
+}
+
+.speaker-modal__role {
+  color: #eb0028;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.speaker-modal__body {
+  padding: 0 1.75rem 1.75rem;
+}
+
+.speaker-modal__bio {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.speaker-modal__announcement {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+  padding: 0.5rem 0.85rem;
+  background: rgba(235, 0, 40, 0.15);
+  border-radius: 8px;
+  color: #ff4d6d;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+@media (max-width: 575.98px) {
+  .speakers-section__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .speaker-modal__header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* ================================
+   About TEDx — dark theme
+   ================================ */
+
+.about-tedx-section {
+  background: #0a0a0a;
+}
+
+.about-tedx-section .title,
+.about-tedx-section .subtitle {
+  color: #fff;
+}
+
+.about-tedx-section .description {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.about-tedx-quote {
+  border-left: 4px solid #eb0028;
+  padding: 1.25rem 1.5rem;
+  margin: 2rem 0;
+  background: #141414;
+  border-radius: 0 12px 12px 0;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-left: 4px solid #eb0028;
+}
+
+.about-tedx-quote p {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.about-tedx-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+.about-tedx-card {
+  background: #141414;
+  border-radius: 14px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.about-tedx-card:hover {
+  border-color: rgba(235, 0, 40, 0.35);
+  box-shadow: 0 12px 32px rgba(235, 0, 40, 0.1);
+}
+
+.about-tedx-card__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(235, 0, 40, 0.15);
+  color: #eb0028;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.about-tedx-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.about-tedx-card p {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.about-tedx-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.about-tedx-meta__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.1rem;
+  background: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.about-tedx-meta__item i {
+  color: #eb0028;
+}
+
+.about-tedx-license {
+  margin-top: 2rem;
+  padding: 1.25rem;
+  background: #111;
+  border-radius: 12px;
+  border: 1px dashed rgba(235, 0, 40, 0.35);
+  text-align: center;
+}
+
+.about-tedx-license p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.6;
+}
+
+.about-tedx-license strong {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 991.98px) {
+  .about-tedx-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ================================
+   Mobile bottom navbar
+   ================================ */
+
+@media (max-width: 1199.98px) {
+  body.spybody {
+    padding-bottom: calc(3.75rem + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+.tedx-mobile-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9980;
+  display: flex;
+  align-items: stretch;
+  background: #0a0a0a;
+  border-top: 2px solid #eb0028;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.tedx-mobile-nav__link {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  min-height: 3.5rem;
+  padding: 0.4rem 0.2rem;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.tedx-mobile-nav__link::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+
+.tedx-mobile-nav__link.is-active {
+  color: #eb0028;
+  background: #0a0a0a;
+}
+
+.tedx-mobile-nav__link.is-active::before {
+  background: #eb0028;
+}
+
+.tedx-mobile-nav__label {
+  line-height: 1.1;
+  text-align: center;
+}
+
+@media (max-width: 380px) {
+  .tedx-mobile-nav__link {
+    font-size: 0.55rem;
+    letter-spacing: 0.03em;
+  }
+
+  .tedx-mobile-nav__link[data-nav-section="about-tedx"] .tedx-mobile-nav__label {
+    font-size: 0.5rem;
+  }
+}

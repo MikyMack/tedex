@@ -2,14 +2,17 @@
   'use strict';
 
   var API = window.location.origin;
+  var BASE_REGISTRATIONS = 278;
+
+  function formatRegistrationCount(apiCount) {
+    return (BASE_REGISTRATIONS + (apiCount || 0)) + '+';
+  }
 
   function updateRegistrationCount(count) {
+    var display = formatRegistrationCount(count);
     document.querySelectorAll('#registration-count, #hero-registration-count').forEach(function (el) {
-      el.setAttribute('data-count', count);
-      el.textContent = count;
-      if (typeof jQuery !== 'undefined' && jQuery(el).hasClass('odometer')) {
-        jQuery(el).html(count);
-      }
+      el.setAttribute('data-count', BASE_REGISTRATIONS + (count || 0));
+      el.textContent = display;
     });
   }
 
@@ -19,7 +22,9 @@
       .then(function (data) {
         updateRegistrationCount(data.count || 0);
       })
-      .catch(function () {});
+      .catch(function () {
+        updateRegistrationCount(0);
+      });
   }
 
   function escapeHtml(str) {
@@ -34,56 +39,133 @@
     return '/uploads/' + url;
   }
 
+  var speakersData = [];
+
+  function updateSpeakerCount(speakers) {
+    var countEl = document.getElementById('hero-speaker-count');
+    if (!countEl) return;
+    var fullSpeakers = speakers.filter(function (s) { return !s.isAnnouncementOnly; });
+    countEl.textContent = fullSpeakers.length || '0';
+  }
+
+  function openSpeakerModal(speaker) {
+    var modal = document.getElementById('speaker-modal');
+    if (!modal) return;
+
+    var photo = document.getElementById('speaker-modal-photo');
+    var placeholder = document.getElementById('speaker-modal-photo-placeholder');
+    var announcement = document.getElementById('speaker-modal-announcement');
+
+    document.getElementById('speaker-modal-name').textContent = speaker.name;
+    document.getElementById('speaker-modal-role').textContent = speaker.title;
+    document.getElementById('speaker-modal-bio').textContent = speaker.bio || 'Full bio coming soon.';
+
+    if (speaker.imageUrl) {
+      photo.src = speakerImageSrc(speaker.imageUrl);
+      photo.alt = speaker.name;
+      photo.hidden = false;
+      placeholder.hidden = true;
+    } else {
+      photo.hidden = true;
+      placeholder.hidden = false;
+    }
+
+    if (speaker.announcement) {
+      announcement.innerHTML = '<i class="fa-solid fa-bullhorn"></i> ' + escapeHtml(speaker.announcement);
+      announcement.hidden = false;
+    } else {
+      announcement.hidden = true;
+    }
+
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeSpeakerModal() {
+    var modal = document.getElementById('speaker-modal');
+    if (!modal) return;
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function initSpeakerModal() {
+    var closeBtn = document.getElementById('speaker-modal-close');
+    var backdrop = document.getElementById('speaker-modal-backdrop');
+    if (closeBtn) closeBtn.addEventListener('click', closeSpeakerModal);
+    if (backdrop) backdrop.addEventListener('click', closeSpeakerModal);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeSpeakerModal();
+    });
+  }
+
   function renderSpeakers(speakers, announcement) {
     var grid = document.getElementById('speakers-grid');
     var announcementEl = document.getElementById('speaker-announcement-text');
-    var placeholder = document.getElementById('speakers-placeholder');
 
-    if (announcementEl && announcement) {
-      announcementEl.innerHTML = '<strong>' + escapeHtml(announcement) + '</strong>';
+    speakersData = speakers || [];
+    updateSpeakerCount(speakersData);
+
+    if (announcementEl) {
+      if (announcement && speakersData.length) {
+        announcementEl.innerHTML = '<strong>' + escapeHtml(announcement) + '</strong>';
+        announcementEl.style.display = '';
+      } else if (!speakersData.length) {
+        announcementEl.innerHTML = '<strong>' + escapeHtml(announcement || 'Speaker announcements will be released soon.') + '</strong>';
+      } else {
+        announcementEl.style.display = 'none';
+      }
     }
 
-    if (!grid || !speakers.length) {
+    if (!grid) return;
+
+    if (!speakersData.length) {
+      grid.innerHTML = '';
       return;
     }
 
-    if (placeholder) {
-      placeholder.classList.add('mb--30');
-    }
-
-    grid.innerHTML = speakers
-      .map(function (speaker) {
+    grid.innerHTML = speakersData
+      .map(function (speaker, index) {
         if (speaker.isAnnouncementOnly) {
           return (
-            '<div class="col-lg-4 col-md-6">' +
-            '<div class="about-us-card tmponhover text-center h-100">' +
-            '<div class="card-head justify-content-center">' +
-            '<div class="logo-img"><i class="fa-solid fa-bullhorn fa-2x theme-gradient" style="-webkit-text-fill-color: var(--color-primary);"></i></div>' +
-            '<h3 class="card-title mt--15">' + escapeHtml(speaker.name) + '</h3>' +
-            '</div>' +
-            '<p class="card-para">' + escapeHtml(speaker.announcement || speaker.title) + '</p>' +
-            '</div></div>'
+            '<div class="speaker-card speaker-card--teaser">' +
+            '<i class="fa-solid fa-bullhorn"></i>' +
+            '<h3>' + escapeHtml(speaker.name) + '</h3>' +
+            '<p>' + escapeHtml(speaker.announcement || speaker.title) + '</p>' +
+            '</div>'
           );
         }
 
         var imgHtml = speaker.imageUrl
-          ? '<img src="' + escapeHtml(speakerImageSrc(speaker.imageUrl)) + '" alt="' + escapeHtml(speaker.name) + '" style="width:100%;height:280px;object-fit:cover;border-radius:20px;">'
-          : '<div style="width:100%;height:280px;background:var(--color-gray-2);border-radius:20px;display:flex;align-items:center;justify-content:center;"><i class="fa-solid fa-user fa-4x text-muted"></i></div>';
+          ? '<img src="' + escapeHtml(speakerImageSrc(speaker.imageUrl)) + '" alt="' + escapeHtml(speaker.name) + '">'
+          : '<div class="speaker-card__placeholder"><i class="fa-solid fa-user"></i></div>';
 
         return (
-          '<div class="col-lg-4 col-md-6">' +
-          '<div class="latest-portfolio-card tmponhover">' +
-          '<div class="portfoli-card-img">' + imgHtml + '</div>' +
-          '<div class="portfolio-card-content-wrap flex-column align-items-start">' +
-          '<div class="portfolio-card-title">' +
-          '<h3 class="title">' + escapeHtml(speaker.name) + '</h3>' +
-          '<p class="para mb-0">' + escapeHtml(speaker.title) + '</p>' +
-          (speaker.announcement ? '<p class="para mt--10" style="color:var(--color-primary);"><i class="fa-solid fa-bullhorn me-1"></i>' + escapeHtml(speaker.announcement) + '</p>' : '') +
-          (speaker.bio ? '<p class="para mt--10">' + escapeHtml(speaker.bio) + '</p>' : '') +
-          '</div></div></div></div>'
+          '<article class="speaker-card" data-speaker-index="' + index + '" tabindex="0" role="button" aria-label="View ' + escapeHtml(speaker.name) + '">' +
+          '<div class="speaker-card__img-wrap">' + imgHtml + '</div>' +
+          '<div class="speaker-card__body">' +
+          '<h3 class="speaker-card__name">' + escapeHtml(speaker.name) + '</h3>' +
+          '<p class="speaker-card__title">' + escapeHtml(speaker.title) + '</p>' +
+          '<span class="speaker-card__more">Read More <i class="fa-sharp fa-regular fa-arrow-right"></i></span>' +
+          '</div></article>'
         );
       })
       .join('');
+
+    grid.querySelectorAll('.speaker-card:not(.speaker-card--teaser)').forEach(function (card) {
+      function activate() {
+        var idx = parseInt(card.getAttribute('data-speaker-index'), 10);
+        if (speakersData[idx]) openSpeakerModal(speakersData[idx]);
+      }
+      card.addEventListener('click', activate);
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          activate();
+        }
+      });
+    });
   }
 
   function loadSpeakers() {
@@ -189,10 +271,62 @@
     });
   }
 
+  function initMobileNav() {
+    var nav = document.getElementById('tedx-mobile-nav');
+    if (!nav) return;
+
+    var links = nav.querySelectorAll('.tedx-mobile-nav__link');
+    var sections = [];
+
+    links.forEach(function (link) {
+      var id = link.getAttribute('href').replace('#', '');
+      var section = document.getElementById(id);
+      if (section) {
+        sections.push({ id: id, el: section, link: link });
+      }
+    });
+
+    if (!sections.length) return;
+
+    function setActive(sectionId) {
+      links.forEach(function (link) {
+        link.classList.toggle('is-active', link.getAttribute('data-nav-section') === sectionId);
+      });
+    }
+
+    function updateActiveOnScroll() {
+      var offset = window.innerHeight * 0.32;
+      var scrollPos = window.scrollY + offset;
+      var current = sections[0].id;
+
+      sections.forEach(function (item) {
+        if (item.el.offsetTop <= scrollPos) {
+          current = item.id;
+        }
+      });
+
+      setActive(current);
+    }
+
+    window.addEventListener('scroll', updateActiveOnScroll, { passive: true });
+    window.addEventListener('resize', updateActiveOnScroll);
+    updateActiveOnScroll();
+
+    links.forEach(function (link) {
+      link.addEventListener('click', function () {
+        var sectionId = link.getAttribute('data-nav-section');
+        setActive(sectionId);
+        window.setTimeout(updateActiveOnScroll, 500);
+      });
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     loadRegistrationCount();
     loadSpeakers();
     initRegistrationForm();
     initHeroCountdown();
+    initSpeakerModal();
+    initMobileNav();
   });
 })();

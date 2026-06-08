@@ -17,6 +17,8 @@
     <!-- custom css -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/hero.css">
+    <link rel="stylesheet" href="assets/css/tedx-sections.css">
+    <link rel="stylesheet" href="assets/css/tedx-dark.css">
 </head>
 
 <body class="spybody " data-spy="scroll" data-bs-target=".navbar-example2" data-offset="150">
@@ -38,12 +40,12 @@
                             <nav class="navbar-example2 onepagenav">
                                 <ul class="tmp-mainmenu nav nav-pills">
                                     <li class="current"><a class="smoth-animation" href="#home">Home</a></li>
+                                    <li class="nav-item"><a class="smoth-animation" href="#about-tedx">About</a></li>
                                     <li class="nav-item"><a class="smoth-animation" href="#about">Theme</a></li>
                                     <li class="nav-item"><a class="smoth-animation" href="#service">Why TEDx</a></li>
                                     <li class="nav-item"><a class="smoth-animation" href="#speakers">Speakers</a></li>
                                     <li class="nav-item"><a class="smoth-animation" href="#student-voices">Student Voices</a></li>
                                     <li class="nav-item"><a class="smoth-animation" href="#applications">Apply</a></li>
-                                    <li class="nav-item"><a class="smoth-animation" href="#about-tedx">About TEDx</a></li>
                                     <li class="nav-item"><a class="smoth-animation" href="#contacts">Join Us</a></li>
                                 </ul>
                             </nav>
@@ -83,13 +85,10 @@
 
                 <ul class="tmp-mainmenu onepagenav-click">
                     <li><a class="smoth-animation" href="#home">Home</a></li>
-                    <li><a class="smoth-animation" href="#about">Theme</a></li>
-                    <li><a class="smoth-animation" href="#service">Why TEDx</a></li>
-                    <li><a class="smoth-animation" href="#speakers">Speakers</a></li>
-                    <li><a class="smoth-animation" href="#student-voices">Student Voices</a></li>
-                    <li><a class="smoth-animation" href="#applications">Apply</a></li>
                     <li><a class="smoth-animation" href="#about-tedx">About TEDx</a></li>
-                    <li><a class="smoth-animation" href="#contacts">Join Us</a></li>
+                    <li><a class="smoth-animation" href="#about">Theme</a></li>
+                    <li><a class="smoth-animation" href="#speakers">Speakers</a></li>
+                    <li><a class="smoth-animation" href="#applications">Apply</a></li>
                 </ul>
 
             </div>
@@ -98,27 +97,29 @@
     <!-- End Popup Mobile Menu  -->
 
     <!-- Hero Section -->
-    <section class="tedx-hero" id="home" style="--tedx-hero-figure: url('assets/images/bg1.png')">
+    <section class="tedx-hero" id="home">
         <div class="tedx-hero__bg" aria-hidden="true">
             <div class="tedx-hero__bg-image"></div>
-            <div class="tedx-hero__figure-bg"></div>
             <div class="tedx-hero__overlay"></div>
             <div class="tedx-hero__mobile-overlay"></div>
             <div class="tedx-hero__glow"></div>
             <div class="tedx-hero__grid"></div>
         </div>
 
-        <div class="container tedx-hero__container">
-            <div class="row align-items-center g-4 g-lg-5">
-                <div class="col-lg-7 col-xl-6">
-                    <div class="tedx-hero__content">
-                        <div class="tedx-hero__badge tmp-scroll-trigger tmp-fade-in animation-order-1">
-                            <span class="tedx-hero__badge-dot"></span>
-                            TEDx Divine Public School Youth 2027
-                        </div>
+        <div class="tedx-hero__robot" aria-hidden="true">
+            <img src="assets/images/logo/bg2.png" alt="">
+        </div>
 
-                        <h1 class="tedx-hero__title tmp-scroll-trigger tmp-fade-in animation-order-2">
-                            The Narrative Shift
+        <div class="container tedx-hero__container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-xl-5 tedx-hero__content-col">
+                    <div class="tedx-hero__content">
+                        <p class="tedx-hero__brand tmp-scroll-trigger tmp-fade-in animation-order-1">TEDx Divine Public School Youth</p>
+
+                        <h1 class="tedx-hero__headline tmp-scroll-trigger tmp-fade-in animation-order-2">Ideas Worth Spreading</h1>
+
+                        <p class="tedx-hero__theme tmp-scroll-trigger tmp-fade-in animation-order-2">
+                            The Narrative Shift:
                             <span class="tedx-hero__title-accent header-caption">
                                 <span class="cd-headline clip">
                                     <span class="cd-words-wrapper">
@@ -129,24 +130,38 @@
                                     </span>
                                 </span>
                             </span>
-                        </h1>
-
-                        <p class="tedx-hero__subtitle tmp-scroll-trigger tmp-fade-in animation-order-3">
-                            Challenge the stories that limit us. Join a day of bold ideas, young voices, and conversations that reshape what we believe is possible.
                         </p>
 
-                        <div class="tedx-hero__meta tmp-scroll-trigger tmp-fade-in animation-order-3">
-                            <span class="tedx-hero__chip">
-                                <i class="fa-solid fa-calendar-days"></i>
-                                9 January 2027
-                            </span>
-                            <span class="tedx-hero__chip">
-                                <i class="fa-solid fa-location-dot"></i>
-                                Puthoor, Kerala
-                            </span>
+                        <p class="tedx-hero__subtitle tmp-scroll-trigger tmp-fade-in animation-order-3">
+                            An independently organized TED event at Divine Public School, Puthoor, Kerala.<br>
+                            Bringing transformative ideas to the stage — from education and innovation to student voices and social impact.
+                        </p>
+
+                        <div class="tedx-hero__actions tmp-scroll-trigger tmp-fade-in animation-order-4">
+                            <a class="tedx-hero__btn tedx-hero__btn--primary smoth-animation" href="#speakers">
+                                Speakers
+                            </a>
+                            <a class="tedx-hero__btn tedx-hero__btn--ghost smoth-animation" href="#about-tedx">
+                                About Us
+                            </a>
                         </div>
 
-                        <div class="tedx-hero__countdown tmp-scroll-trigger tmp-fade-in animation-order-3" id="hero-countdown" data-event-date="2027-01-09T09:00:00+05:30" aria-live="polite">
+                        <div class="tedx-hero__stats-bar tmp-scroll-trigger tmp-fade-in animation-order-5">
+                            <div class="tedx-hero__stat-block">
+                                <span class="tedx-hero__stat-block-value" id="hero-registration-count">278+</span>
+                                <span class="tedx-hero__stat-block-label">Attendees</span>
+                            </div>
+                            <div class="tedx-hero__stat-block">
+                                <span class="tedx-hero__stat-block-value" id="hero-speaker-count">0</span>
+                                <span class="tedx-hero__stat-block-label">Speakers</span>
+                            </div>
+                            <div class="tedx-hero__stat-block">
+                                <span class="tedx-hero__stat-block-value">8+</span>
+                                <span class="tedx-hero__stat-block-label">Sessions</span>
+                            </div>
+                        </div>
+
+                        <div class="tedx-hero__countdown tmp-scroll-trigger tmp-fade-in animation-order-5" id="hero-countdown" data-event-date="2027-01-09T09:00:00+05:30" aria-live="polite">
                             <p class="tedx-hero__countdown-label">Event starts in</p>
                             <div class="tedx-hero__countdown-grid">
                                 <div class="tedx-hero__countdown-item">
@@ -167,51 +182,69 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="tedx-hero__actions tmp-scroll-trigger tmp-fade-in animation-order-4">
-                            <a class="tedx-hero__btn tedx-hero__btn--primary smoth-animation" href="#contacts">
-                                Register Now
-                                <i class="fa-sharp fa-regular fa-arrow-right"></i>
-                            </a>
-                            <a class="tedx-hero__btn tedx-hero__btn--ghost smoth-animation" href="#about">
-                                Explore the Theme
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="col-lg-5 col-xl-6 d-none d-lg-block">
-                    <div class="tedx-hero__visual tmp-scroll-trigger tmp-fade-in animation-order-2">
-                        <div class="tedx-hero__visual-frame">
-                            <img src="assets/images/bg1.png" alt="TEDx Divine Public School Youth — Ideas worth spreading">
-                        </div>
-                        <div class="tedx-hero__float-card tedx-hero__float-card--top">
-                            <div class="tedx-hero__float-icon"><i class="fa-solid fa-lightbulb"></i></div>
-                            <div class="tedx-hero__float-text">
-                                <strong>Ideas Worth Spreading</strong>
-                                <span>Independent TED event</span>
-                            </div>
-                        </div>
-                        <div class="tedx-hero__float-card tedx-hero__float-card--bottom">
-                            <div class="tedx-hero__float-icon"><i class="fa-solid fa-microphone"></i></div>
-                            <div class="tedx-hero__float-text">
-                                <strong>Student Voices</strong>
-                                <span>Young thinkers on stage</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <a href="#about" class="tedx-hero__scroll smoth-animation" aria-label="Scroll to theme section">
-            <span>Scroll</span>
+        <a href="#about-tedx" class="tedx-hero__scroll smoth-animation" aria-label="Scroll to explore">
+            <span>Scroll to Explore</span>
             <span class="tedx-hero__scroll-line"></span>
         </a>
     </section>
     <!-- Hero Section End -->
 
+    <!-- About TEDx Start -->
+    <section class="about-tedx-section tmp-section-gapTop tmp-section-gapBottom" id="about-tedx">
+        <div class="container">
+            <div class="section-head mb--50">
+                <div class="section-sub-title center-title tmp-scroll-trigger tmp-fade-in animation-order-1">
+                    <span class="subtitle">What's TEDx Divine Public School Youth 2027?</span>
+                </div>
+                <h2 class="title split-collab tmp-scroll-trigger tmp-fade-in animation-order-2">One Day. Bold Voices.<br>Infinite Ideas.</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="about-tedx-quote tmp-scroll-trigger tmp-fade-in animation-order-3">
+                        <p>"Ideas worth spreading aren't just those that comfort us — they're the ones that disturb us just enough to make us grow."</p>
+                    </div>
+                    <p class="description tmp-scroll-trigger tmp-fade-in animation-order-3">On 9th January 2027, Divine Public School, Puthoor will open its doors to an extraordinary gathering of thinkers, innovators, educators, and young voices. TEDx Divine Public School Youth 2027 brings together speakers from education, entrepreneurship, innovation, leadership, social impact, science, and the arts — all under one roof.</p>
+                    <p class="description tmp-scroll-trigger tmp-fade-in animation-order-4 mt--20">Under the theme <strong>"The Narrative Shift: Redefining Possible,"</strong> we explore how changing the stories we believe about ourselves, our institutions, and our future can unlock extraordinary potential. This is a platform where student voices stand alongside accomplished leaders — where curiosity meets courage.</p>
+
+                    <div class="about-tedx-meta tmp-scroll-trigger tmp-fade-in animation-order-4">
+                        <span class="about-tedx-meta__item"><i class="fa-solid fa-calendar-days"></i> 9 January 2027</span>
+                        <span class="about-tedx-meta__item"><i class="fa-solid fa-location-dot"></i> Puthoor, Kerala</span>
+                        <span class="about-tedx-meta__item"><i class="fa-solid fa-school"></i> Divine Public School</span>
+                    </div>
+
+                    <div class="about-tedx-cards tmp-scroll-trigger tmp-fade-in animation-order-5">
+                        <div class="about-tedx-card">
+                            <div class="about-tedx-card__icon"><i class="fa-solid fa-globe"></i></div>
+                            <h3>What is TEDx?</h3>
+                            <p>TEDx is a global program of independently organized events licensed by TED, dedicated to discovering and sharing ideas that matter in local communities around the world.</p>
+                        </div>
+                        <div class="about-tedx-card">
+                            <div class="about-tedx-card__icon"><i class="fa-solid fa-lightbulb"></i></div>
+                            <h3>Our Mission</h3>
+                            <p>To foster curiosity, inspire innovation, and cultivate meaningful conversations across generations — spreading ideas that challenge assumptions and inspire action.</p>
+                        </div>
+                        <div class="about-tedx-card">
+                            <div class="about-tedx-card__icon"><i class="fa-solid fa-users"></i></div>
+                            <h3>Who It's For</h3>
+                            <p>Students, educators, parents, entrepreneurs, and anyone passionate about ideas. Join a community united by curiosity, creativity, and the courage to reimagine what's possible.</p>
+                        </div>
+                    </div>
+
+                    <p class="description tmp-scroll-trigger tmp-fade-in animation-order-5 mt--30">Created in the spirit of TED's mission of "Ideas Worth Spreading," TEDx events bring people together to experience live speakers and thought-provoking conversations that inspire curiosity, understanding, and action. In the spirit of TED's mission, TEDx events are designed to spark deep discussion and connection at the local level.</p>
+
+                    <div class="about-tedx-license tmp-scroll-trigger tmp-fade-in animation-order-6">
+                        <p><strong>TEDx Divine Public School Youth</strong> is an independently organized TEDx event operated under license from TED. This event is organized by Divine Public School and is not organized by TED Conferences, LLC.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About TEDx End -->
 
     <!-- tmp About Me Start -->
     <section class="about-us-area tmp-section-gapTop" id="about">
@@ -229,7 +262,7 @@
                                 <div class="icon"><i class="fa-sharp fa-thin fa-users"></i></div>
                             </div>
                             <div class="card-info">
-                                <h3 class="card-title counter"><span class="odometer" id="registration-count" data-count="0">0</span></h3>
+                                <h3 class="card-title counter"><span id="registration-count">278+</span></h3>
                                 <p class="card-para">Registered Attendees</p>
                             </div>
                         </div>
@@ -330,27 +363,40 @@
     <!-- Tpm Latest Service Area End -->
 
     <!-- Our Speakers Start -->
-    <section class="tmp-portfolio-area tmp-section-gapTop" id="speakers">
+    <section class="speakers-section tmp-section-gapTop tmp-section-gapBottom" id="speakers">
         <div class="container">
             <div class="section-head mb--60">
                 <div class="section-sub-title center-title tmp-scroll-trigger tmp-fade-in animation-order-1">
-                    <span class="subtitle">Our Speakers</span>
+                    <span class="subtitle">Voices That Matter</span>
                 </div>
-                <h2 class="title split-collab tmp-scroll-trigger tmp-fade-in animation-order-2">Ideas That Redefine <br> What Is Possible</h2>
-                <p class="description section-sm tmp-scroll-trigger tmp-fade-in animation-order-3">Our stage will feature a carefully curated lineup of speakers whose experiences and ideas reflect the spirit of transformative thinking.</p>
+                <h2 class="title split-collab tmp-scroll-trigger tmp-fade-in animation-order-2">Meet the Speakers</h2>
+                <p class="description section-sm tmp-scroll-trigger tmp-fade-in animation-order-3" id="speakers-intro">Extraordinary minds. One stage. Ideas that will challenge the way you see the world.</p>
+                <p class="description section-sm tmp-scroll-trigger tmp-fade-in animation-order-4 text-center mt--15" id="speaker-announcement-text"><strong>Speaker announcements will be released soon.</strong></p>
             </div>
-            <div class="row justify-content-center" id="speakers-container">
-                <div class="col-lg-10" id="speakers-placeholder">
-                    <p class="description tmp-scroll-trigger tmp-fade-in animation-order-4 text-center">Representing diverse fields—including education, entrepreneurship, innovation, leadership, social impact, science, and the arts—each speaker will offer a unique perspective on redefining what is possible.</p>
-                    <p class="description tmp-scroll-trigger tmp-fade-in animation-order-5 text-center mt--30" id="speaker-announcement-text"><strong>Speaker announcements will be released soon.</strong></p>
-                </div>
-                <div class="col-12">
-                    <div class="row g-4 justify-content-center" id="speakers-grid"></div>
-                </div>
-            </div>
+            <div class="speakers-section__grid" id="speakers-grid"></div>
         </div>
     </section>
     <!-- Our Speakers End -->
+
+    <!-- Speaker Modal -->
+    <div class="speaker-modal" id="speaker-modal" aria-hidden="true">
+        <div class="speaker-modal__backdrop" id="speaker-modal-backdrop"></div>
+        <div class="speaker-modal__dialog" role="dialog" aria-labelledby="speaker-modal-name">
+            <button class="speaker-modal__close" id="speaker-modal-close" aria-label="Close"><i class="fa-sharp fa-light fa-xmark"></i></button>
+            <div class="speaker-modal__header">
+                <img class="speaker-modal__photo" id="speaker-modal-photo" src="" alt="" hidden>
+                <div class="speaker-modal__photo-placeholder" id="speaker-modal-photo-placeholder"><i class="fa-solid fa-user"></i></div>
+                <div>
+                    <h3 class="speaker-modal__name" id="speaker-modal-name"></h3>
+                    <p class="speaker-modal__role" id="speaker-modal-role"></p>
+                    <div class="speaker-modal__announcement" id="speaker-modal-announcement" hidden></div>
+                </div>
+            </div>
+            <div class="speaker-modal__body">
+                <p class="speaker-modal__bio" id="speaker-modal-bio"></p>
+            </div>
+        </div>
+    </div>
 
 
     <!-- Tpm Education Experience Area Start -->
@@ -625,28 +671,6 @@
     </section>
     <!-- tmp Clients Testimonial End -->
 
-    <!-- About TEDx Start -->
-    <section class="blog-and-news-are tmp-section-gap" id="about-tedx">
-        <div class="container">
-            <div class="section-head mb--60">
-                <div class="section-sub-title center-title tmp-scroll-trigger tmp-fade-in animation-order-1">
-                    <span class="subtitle">About TEDx</span>
-                </div>
-                <h2 class="title split-collab tmp-scroll-trigger tmp-fade-in animation-order-2">Ideas Worth Spreading</h2>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <p class="description tmp-scroll-trigger tmp-fade-in animation-order-3">TEDx is a global community of independently organized events dedicated to discovering and sharing ideas that matter.</p>
-                    <p class="description tmp-scroll-trigger tmp-fade-in animation-order-4 mt--20">Created in the spirit of TED's mission of "Ideas Worth Spreading," TEDx events bring people together to experience live speakers and thought-provoking conversations that inspire curiosity, understanding, and action.</p>
-                    <p class="description tmp-scroll-trigger tmp-fade-in animation-order-5 mt--20">TEDx Divine Public School Youth operates under a license granted by TED and is independently organized by Divine Public School.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- About TEDx End -->
-
-
-
     <!-- Tpm Get In touch start -->
     <section class="get-in-touch-area tmp-section-gapBottom" id="contacts">
         <div class="container">
@@ -768,6 +792,9 @@
                             <h5 class="ft-title">Quick Links</h5>
                             <ul class="ft-link tmp-link-animation">
                                 <li>
+                                    <a class="smoth-animation" href="#about-tedx">About TEDx</a>
+                                </li>
+                                <li>
                                     <a class="smoth-animation" href="#about">About the Theme</a>
                                 </li>
                                 <li>
@@ -853,6 +880,26 @@
 </div> -->
 
 
+
+    <!-- Mobile bottom navbar -->
+    <nav class="tedx-mobile-nav d-xl-none" id="tedx-mobile-nav" aria-label="Mobile navigation">
+        <a href="#home" class="tedx-mobile-nav__link smoth-animation is-active" data-nav-section="home">
+            <span class="tedx-mobile-nav__label">Home</span>
+        </a>
+        <a href="#about-tedx" class="tedx-mobile-nav__link smoth-animation" data-nav-section="about-tedx">
+            <span class="tedx-mobile-nav__label">About TEDx</span>
+        </a>
+        <a href="#about" class="tedx-mobile-nav__link smoth-animation" data-nav-section="about">
+            <span class="tedx-mobile-nav__label">Theme</span>
+        </a>
+        <a href="#speakers" class="tedx-mobile-nav__link smoth-animation" data-nav-section="speakers">
+            <span class="tedx-mobile-nav__label">Speakers</span>
+        </a>
+        <a href="#applications" class="tedx-mobile-nav__link smoth-animation" data-nav-section="applications">
+            <span class="tedx-mobile-nav__label">Apply</span>
+        </a>
+    </nav>
+    <!-- Mobile bottom navbar end -->
 
     <script src="assets/js/vendor/jquery.js"></script>
     <script src="assets/js/vendor/jquery-ui.min.js"></script>

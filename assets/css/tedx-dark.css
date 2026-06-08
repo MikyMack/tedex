@@ -1,0 +1,20 @@
+/* Site-wide black background overrides */
+
+body {
+  background: #0a0a0a !important;
+}
+
+section {
+  background-color: #0a0a0a;
+}
+
+.about-us-area,
+.latest-service-area,
+.tmp-portfolio-area,
+.education-experience,
+.our-price-plan-area,
+.clients-testimonial-area,
+.blog-and-news-are,
+.get-in-touch-area {
+  background: #0a0a0a !important;
+}
