@@ -1,0 +1,621 @@
+/* ================================
+   TEDx Hero Section
+   ================================ */
+
+.tedx-hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 7rem 0 4rem;
+  background: #0a0a0a;
+}
+
+.tedx-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.tedx-hero__bg-image {
+  position: absolute;
+  inset: 0;
+  background: url("../images/bg/bg-image-4.jpg") center / cover no-repeat;
+  transform: scale(1.05);
+  animation: tedxHeroKenBurns 20s ease-in-out infinite alternate;
+}
+
+@keyframes tedxHeroKenBurns {
+  from { transform: scale(1.05); }
+  to   { transform: scale(1.12); }
+}
+
+.tedx-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(10, 10, 10, 0.92) 0%, rgba(10, 10, 10, 0.75) 45%, rgba(235, 0, 40, 0.18) 100%),
+    linear-gradient(to top, #0a0a0a 0%, transparent 35%);
+}
+
+.tedx-hero__figure-bg {
+  display: none;
+}
+
+.tedx-hero__mobile-overlay {
+  display: none;
+}
+
+.tedx-hero__glow {
+  position: absolute;
+  width: min(60vw, 520px);
+  height: min(60vw, 520px);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(235, 0, 40, 0.35) 0%, transparent 70%);
+  top: -10%;
+  right: -5%;
+  pointer-events: none;
+  filter: blur(40px);
+}
+
+.tedx-hero__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 100%);
+}
+
+.tedx-hero__container {
+  position: relative;
+  z-index: 2;
+}
+
+.tedx-hero__content {
+  max-width: 640px;
+}
+
+.tedx-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1rem 0.45rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: clamp(0.72rem, 2vw, 0.85rem);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.tedx-hero__badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-primary, #eb0028);
+  box-shadow: 0 0 12px rgba(235, 0, 40, 0.8);
+  animation: tedxPulse 2s ease-in-out infinite;
+}
+
+@keyframes tedxPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.6; transform: scale(0.85); }
+}
+
+.tedx-hero__title {
+  color: #fff;
+  font-size: clamp(2rem, 5.5vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.tedx-hero__title-accent {
+  display: block;
+  margin-top: 0.35rem;
+  min-height: 1.2em;
+}
+
+.tedx-hero__title-accent .cd-headline.clip .cd-words-wrapper::after {
+  background-color: var(--color-primary, #eb0028);
+}
+
+.tedx-hero__title-accent .cd-headline.clip b,
+.tedx-hero__title-accent .cd-headline.clip b.is-visible {
+  background: linear-gradient(90deg, #ff4d6d 0%, #eb0028 50%, #ff8fa3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.tedx-hero__title .cd-headline {
+  display: inline-block;
+  vertical-align: bottom;
+  width: 100%;
+}
+
+.tedx-hero__title .cd-words-wrapper {
+  display: inline-block;
+  position: relative;
+  text-align: inherit;
+}
+
+.tedx-hero__subtitle {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: clamp(0.95rem, 2.2vw, 1.125rem);
+  line-height: 1.65;
+  margin-bottom: 1.75rem;
+  max-width: 540px;
+}
+
+.tedx-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 2rem;
+}
+
+.tedx-hero__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(0.78rem, 1.8vw, 0.875rem);
+  line-height: 1.3;
+}
+
+.tedx-hero__chip i {
+  color: var(--color-primary, #eb0028);
+  font-size: 0.9em;
+  flex-shrink: 0;
+}
+
+.tedx-hero__countdown {
+  margin-bottom: 2rem;
+}
+
+.tedx-hero__countdown-label {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: clamp(0.7rem, 1.6vw, 0.8rem);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 0.75rem;
+}
+
+.tedx-hero__countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.65rem;
+  max-width: 420px;
+}
+
+.tedx-hero__countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 0.5rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  min-width: 0;
+}
+
+.tedx-hero__countdown-num {
+  display: block;
+  color: #fff;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.tedx-hero__countdown-unit {
+  display: block;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: clamp(0.6rem, 1.4vw, 0.7rem);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 0.35rem;
+}
+
+.tedx-hero__countdown.is-live .tedx-hero__countdown-grid {
+  display: none;
+}
+
+.tedx-hero__countdown.is-live .tedx-hero__countdown-label {
+  color: #fff;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  letter-spacing: 0.04em;
+  text-transform: none;
+  margin-bottom: 0;
+  padding: 1rem 1.25rem;
+  border-radius: 14px;
+  background: rgba(235, 0, 40, 0.2);
+  border: 1px solid rgba(235, 0, 40, 0.4);
+  text-align: center;
+}
+
+.tedx-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-bottom: 2.5rem;
+}
+
+.tedx-hero__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  font-size: clamp(0.875rem, 2vw, 0.95rem);
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  white-space: nowrap;
+}
+
+.tedx-hero__btn--primary {
+  background: var(--color-primary, #eb0028);
+  color: #fff;
+  border: 2px solid var(--color-primary, #eb0028);
+  box-shadow: 0 8px 32px rgba(235, 0, 40, 0.35);
+}
+
+.tedx-hero__btn--primary:hover {
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(235, 0, 40, 0.45);
+}
+
+.tedx-hero__btn--ghost {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.tedx-hero__btn--ghost:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px);
+}
+
+.tedx-hero__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  max-width: 480px;
+}
+
+.tedx-hero__stat {
+  padding: 0.85rem 0.75rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+}
+
+.tedx-hero__stat-value {
+  display: block;
+  color: #fff;
+  font-size: clamp(1.25rem, 3vw, 1.65rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.tedx-hero__stat-label {
+  display: block;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: clamp(0.65rem, 1.5vw, 0.75rem);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 0.2rem;
+}
+
+/* Visual column */
+.tedx-hero__visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.tedx-hero__visual-frame {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 4 / 5;
+  border-radius: 24px;
+  overflow: hidden;
+
+}
+
+.tedx-hero__visual-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.tedx-hero__visual-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10, 10, 10, 0.5) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.tedx-hero__float-card {
+  position: absolute;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  z-index: 3;
+  animation: tedxFloat 4s ease-in-out infinite;
+}
+
+.tedx-hero__float-card--top {
+  top: 8%;
+  left: -8%;
+  animation-delay: 0s;
+}
+
+.tedx-hero__float-card--bottom {
+  bottom: 10%;
+  right: -6%;
+  animation-delay: 1.5s;
+}
+
+@keyframes tedxFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+.tedx-hero__float-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(235, 0, 40, 0.1);
+  color: var(--color-primary, #eb0028);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.tedx-hero__float-text strong {
+  display: block;
+  font-size: 0.85rem;
+  color: #1a1a1a;
+  line-height: 1.2;
+}
+
+.tedx-hero__float-text span {
+  font-size: 0.72rem;
+  color: #666;
+}
+
+.tedx-hero__scroll {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.tedx-hero__scroll:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.tedx-hero__scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(235, 0, 40, 0.8), transparent);
+  animation: tedxScrollLine 2s ease-in-out infinite;
+}
+
+@keyframes tedxScrollLine {
+  0%, 100% { transform: scaleY(1); opacity: 1; }
+  50%       { transform: scaleY(0.5); opacity: 0.4; }
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 991.98px) {
+  .tedx-hero {
+    padding: 6.5rem 0 3.5rem;
+    min-height: auto;
+  }
+
+  .tedx-hero__figure-bg {
+    display: block;
+    position: absolute;
+    inset: 0;
+    background-image: var(--tedx-hero-figure);
+    background-size: min(85vw, 420px) auto;
+    background-position: top 12% right -8%;
+    background-repeat: no-repeat;
+    opacity: 0.55;
+    z-index: 1;
+  }
+
+  .tedx-hero__mobile-overlay {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background:
+      linear-gradient(to bottom, rgba(10, 10, 10, 0.88) 0%, rgba(10, 10, 10, 0.72) 45%, rgba(10, 10, 10, 0.92) 100%),
+      linear-gradient(to right, rgba(10, 10, 10, 0.95) 0%, rgba(10, 10, 10, 0.55) 55%, rgba(10, 10, 10, 0.35) 100%),
+      linear-gradient(135deg, rgba(235, 0, 40, 0.12) 0%, transparent 50%);
+  }
+
+  .tedx-hero__overlay {
+    background:
+      linear-gradient(to bottom, rgba(10, 10, 10, 0.4) 0%, transparent 40%),
+      linear-gradient(to top, rgba(10, 10, 10, 0.85) 0%, transparent 30%);
+  }
+
+  .tedx-hero__glow {
+    top: 5%;
+    right: -15%;
+    opacity: 0.6;
+  }
+
+  .tedx-hero__scroll {
+    display: none;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .tedx-hero {
+    padding: 5.5rem 0 2.5rem;
+    min-height: 100svh;
+  }
+
+  .tedx-hero__figure-bg {
+    background-size: min(95vw, 360px) auto;
+    background-position: top 8% center;
+    opacity: 0.45;
+  }
+
+  .tedx-hero__mobile-overlay {
+    background:
+      linear-gradient(to bottom, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0.78) 50%, rgba(10, 10, 10, 0.94) 100%),
+      linear-gradient(to top, rgba(10, 10, 10, 0.6) 0%, transparent 35%);
+  }
+
+  .tedx-hero__content {
+    text-align: center;
+  }
+
+  .tedx-hero__badge {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .tedx-hero__subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .tedx-hero__meta {
+    justify-content: center;
+  }
+
+  .tedx-hero__countdown {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .tedx-hero__countdown-label {
+    text-align: center;
+  }
+
+  .tedx-hero__countdown-grid {
+    max-width: 100%;
+    gap: 0.5rem;
+  }
+
+  .tedx-hero__countdown-item {
+    padding: 0.65rem 0.35rem;
+  }
+
+  .tedx-hero__actions {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .tedx-hero__btn {
+    width: auto;
+    min-width: 0;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  .tedx-hero__stats {
+    max-width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .tedx-hero__stat {
+    padding: 0.65rem 0.4rem;
+  }
+
+  .tedx-hero__title-accent .cd-headline,
+  .tedx-hero__title-accent .cd-words-wrapper {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .tedx-hero__visual-frame {
+    max-width: 400px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .tedx-hero__content {
+    max-width: 680px;
+  }
+
+  .tedx-hero__visual-frame {
+    max-width: 520px;
+  }
+}
+
+/* Header over dark hero */
+.header-one.header--transparent .tmp-mainmenu.nav-pills li a {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.header-one.header--transparent .tmp-mainmenu.nav-pills li.current a,
+.header-one.header--transparent .tmp-mainmenu.nav-pills li a:hover {
+  color: #fff;
+}
+
+.header-one.header--transparent .humberger-menu {
+  color: #fff;
+}

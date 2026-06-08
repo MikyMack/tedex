@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEDx Admin Dashboard</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/images/favicon.svg">
+    <link rel="stylesheet" href="../assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/vendor/fontawesome.css">
+    <style>
+        :root {
+            --tedx-red: #eb0028;
+            --tedx-dark: #1a1a1a;
+            --tedx-gray: #f5f5f5;
+        }
+        body {
+            background: var(--tedx-gray);
+            font-family: system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+        }
+        .login-wrap {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+        }
+        .login-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .login-card h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+        .login-card .subtitle {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        .admin-header {
+            background: var(--tedx-dark);
+            color: #fff;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .admin-header h1 {
+            font-size: 1.25rem;
+            margin: 0;
+            font-weight: 600;
+        }
+        .stat-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border-left: 4px solid var(--tedx-red);
+        }
+        .stat-card .stat-num {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--tedx-red);
+        }
+        .stat-card .stat-label {
+            color: #666;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+        .panel {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            margin-bottom: 1.5rem;
+        }
+        .panel h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #eee;
+        }
+        .nav-tabs .nav-link {
+            color: #666;
+            border: none;
+            padding: 0.75rem 1.25rem;
+            font-weight: 500;
+        }
+        .nav-tabs .nav-link.active {
+            color: var(--tedx-red);
+            border-bottom: 2px solid var(--tedx-red);
+            background: transparent;
+        }
+        .table th {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #888;
+            font-weight: 600;
+        }
+        .badge-type {
+            font-size: 0.75rem;
+            padding: 0.35em 0.65em;
+        }
+        .btn-tedx {
+            background: var(--tedx-red);
+            border-color: var(--tedx-red);
+            color: #fff;
+        }
+        .btn-tedx:hover {
+            background: #c80022;
+            border-color: #c80022;
+            color: #fff;
+        }
+        .speaker-card-admin {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .speaker-card-admin img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .hidden { display: none !important; }
+        .toast-msg {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 9999;
+            min-width: 280px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="login-screen" class="login-wrap">
+    <div class="login-card">
+        <h1>TEDx Admin</h1>
+        <p class="subtitle">Divine Public School Youth 2027</p>
+        <form id="login-form">
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input type="text" class="form-control" id="login-username" required autocomplete="username">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" id="login-password" required autocomplete="current-password">
+            </div>
+            <div id="login-error" class="alert alert-danger hidden py-2"></div>
+            <button type="submit" class="btn btn-tedx w-100">Sign In</button>
+        </form>
+    </div>
+</div>
+
+<div id="dashboard-screen" class="hidden">
+    <header class="admin-header">
+        <div class="container-fluid px-4 d-flex justify-content-between align-items-center">
+            <h1><i class="fa-solid fa-gauge-high me-2"></i>TEDx Admin Dashboard</h1>
+            <div class="d-flex align-items-center gap-3">
+                <span id="admin-user" class="text-white-50 small"></span>
+                <a href="../index.html" class="btn btn-sm btn-outline-light" target="_blank">View Site</a>
+                <button id="logout-btn" class="btn btn-sm btn-outline-light">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container-fluid px-4 py-4">
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <div class="stat-card">
+                    <div class="stat-num" id="stat-registrations">0</div>
+                    <div class="stat-label">Total Registrations</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stat-card">
+                    <div class="stat-num" id="stat-speakers">0</div>
+                    <div class="stat-label">Published Speakers</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stat-card">
+                    <div class="stat-num" id="stat-attendees">0</div>
+                    <div class="stat-label">Attendees</div>
+                </div>
+            </div>
+        </div>
+
+        <ul class="nav nav-tabs mb-3" role="tablist">
+            <li class="nav-item">
+                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-registrations">Registrations</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-speakers">Speakers</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-announcement">Announcement</button>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="tab-registrations">
+                <div class="panel">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h2 class="mb-0 border-0 pb-0">Event Registrations</h2>
+                        <button class="btn btn-sm btn-outline-secondary" id="refresh-registrations">
+                            <i class="fa-solid fa-rotate"></i> Refresh
+                        </button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Organization</th>
+                                    <th>Type</th>
+                                    <th>Date</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="registrations-table"></tbody>
+                        </table>
+                    </div>
+                    <p id="no-registrations" class="text-muted text-center py-4 hidden">No registrations yet.</p>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="tab-speakers">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="panel">
+                            <h2 id="speaker-form-title">Add Speaker</h2>
+                            <form id="speaker-form">
+                                <input type="hidden" id="speaker-id">
+                                <div class="mb-3">
+                                    <label class="form-label">Name *</label>
+                                    <input type="text" class="form-control" id="speaker-name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Title / Role *</label>
+                                    <input type="text" class="form-control" id="speaker-title" required placeholder="e.g. Educator & Innovator">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Bio</label>
+                                    <textarea class="form-control" id="speaker-bio" rows="3"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Speaker Photo</label>
+                                    <input type="file" class="form-control" id="speaker-image" accept="image/jpeg,image/png,image/webp,image/gif">
+                                    <div class="form-text">JPEG, PNG, WebP or GIF — max 5MB</div>
+                                    <div id="speaker-image-preview-wrap" class="mt-2 hidden">
+                                        <img id="speaker-image-preview" src="" alt="Preview" class="rounded" style="max-width:120px;max-height:120px;object-fit:cover;">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Teaser Announcement</label>
+                                    <input type="text" class="form-control" id="speaker-announcement" placeholder="Coming soon...">
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-6">
+                                        <label class="form-label">Display Order</label>
+                                        <input type="number" class="form-control" id="speaker-order" value="0" min="0">
+                                    </div>
+                                    <div class="col-6 d-flex align-items-end gap-3 pb-1">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="speaker-published" checked>
+                                            <label class="form-check-label" for="speaker-published">Published</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="speaker-teaser-only">
+                                            <label class="form-check-label" for="speaker-teaser-only">Teaser only</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <button type="submit" class="btn btn-tedx">Save Speaker</button>
+                                    <button type="button" class="btn btn-outline-secondary hidden" id="cancel-speaker-edit">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="panel">
+                            <h2>All Speakers</h2>
+                            <div id="speakers-list"></div>
+                            <p id="no-speakers" class="text-muted text-center py-4 hidden">No speakers added yet.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="tab-announcement">
+                <div class="panel" style="max-width: 640px;">
+                    <h2>Global Speaker Announcement</h2>
+                    <p class="text-muted small mb-3">This text appears on the website when no speakers are published, or below the speaker list.</p>
+                    <form id="announcement-form">
+                        <div class="mb-3">
+                            <textarea class="form-control" id="global-announcement" rows="3" placeholder="Speaker announcements will be released soon."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-tedx">Save Announcement</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<div id="toast" class="toast-msg hidden">
+    <div class="alert alert-success mb-0 shadow" id="toast-body"></div>
+</div>
+
+<script src="../assets/js/vendor/bootstrap.min.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
