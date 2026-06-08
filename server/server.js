@@ -1,9 +1,9 @@
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const path = require('path');
 
 const authRoutes = require('./routes/auth');
 const registrationRoutes = require('./routes/registrations');
@@ -44,6 +44,17 @@ app.get('/admin', (_req, res) => {
 app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
+
+const requiredEnv = ['MONGODB_URI', 'ADMIN_PASSWORD', 'JWT_SECRET'];
+const missingEnv = requiredEnv.filter((key) => !process.env[key]);
+if (missingEnv.length) {
+  console.error(
+    'Missing required environment variables:',
+    missingEnv.join(', '),
+    `\nCreate ${path.join(__dirname, '.env')} with these values.`
+  );
+  process.exit(1);
+}
 
 mongoose
   .connect(process.env.MONGODB_URI)
