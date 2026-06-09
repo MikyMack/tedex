@@ -24,9 +24,11 @@
 .tedx-hero__bg-image {
   position: absolute;
   inset: 0;
+  z-index: 0;
   background: url("../images/bg/bg-image-4.jpg") center / cover no-repeat;
   transform: scale(1.05);
   animation: tedxHeroKenBurns 20s ease-in-out infinite alternate;
+  opacity: 0.35;
 }
 
 @keyframes tedxHeroKenBurns {
@@ -37,17 +39,40 @@
 .tedx-hero__overlay {
   position: absolute;
   inset: 0;
+  z-index: 2;
+  pointer-events: none;
   background:
-    linear-gradient(135deg, rgba(10, 10, 10, 0.92) 0%, rgba(10, 10, 10, 0.75) 45%, rgba(235, 0, 40, 0.18) 100%),
-    linear-gradient(to top, #0a0a0a 0%, transparent 35%);
+    linear-gradient(to right, rgba(10, 10, 10, 0.92) 0%, rgba(10, 10, 10, 0.6) 42%, rgba(10, 10, 10, 0.2) 68%, rgba(10, 10, 10, 0.05) 100%),
+    linear-gradient(to top, rgba(10, 10, 10, 0.85) 0%, transparent 32%);
+}
+
+.tedx-hero__particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  pointer-events: none;
+}
+
+.tedx-hero__particles canvas {
+  display: block !important;
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: auto;
 }
 
 .tedx-hero__mobile-overlay {
   display: none;
+  z-index: 3;
 }
 
 .tedx-hero__glow {
   position: absolute;
+  z-index: 1;
   width: min(60vw, 520px);
   height: min(60vw, 520px);
   border-radius: 50%;
@@ -61,6 +86,7 @@
 .tedx-hero__grid {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
@@ -71,14 +97,14 @@
 
 .tedx-hero__container {
   position: relative;
-  z-index: 2;
+  z-index: 4;
   width: 100%;
   padding-top: clamp(5.5rem, 10vh, 7.5rem);
 }
 
 .tedx-hero__content-col {
   position: relative;
-  z-index: 3;
+  z-index: 4;
 }
 
 .tedx-hero__content {
@@ -88,7 +114,7 @@
 /* Robot — absolute layer, head extends into header zone */
 .tedx-hero__robot {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   pointer-events: none;
   display: flex;
   align-items: flex-start;
@@ -467,7 +493,7 @@
   bottom: 1.5rem;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2;
+  z-index: 4;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -521,8 +547,8 @@
 
   .tedx-hero__overlay {
     background:
-      linear-gradient(135deg, rgba(10, 10, 10, 0.94) 0%, rgba(10, 10, 10, 0.72) 42%, rgba(10, 10, 10, 0.25) 68%, rgba(235, 0, 40, 0.14) 100%),
-      linear-gradient(to top, #0a0a0a 0%, transparent 35%);
+      linear-gradient(to right, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0.55) 40%, rgba(10, 10, 10, 0.15) 65%, transparent 100%),
+      linear-gradient(to top, rgba(10, 10, 10, 0.8) 0%, transparent 35%);
   }
 }
 
