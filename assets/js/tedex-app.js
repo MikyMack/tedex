@@ -2,29 +2,19 @@
   'use strict';
 
   var API = window.location.origin;
-  var BASE_REGISTRATIONS = 278;
+  var DISPLAY_ATTENDEES = 100;
+  var DISPLAY_SPEAKERS = 12;
 
-  function formatRegistrationCount(apiCount) {
-    return (BASE_REGISTRATIONS + (apiCount || 0)) + '+';
-  }
-
-  function updateRegistrationCount(count) {
-    var display = formatRegistrationCount(count);
+  function updateRegistrationCount() {
+    var display = DISPLAY_ATTENDEES + '+';
     document.querySelectorAll('#registration-count, #hero-registration-count').forEach(function (el) {
-      el.setAttribute('data-count', BASE_REGISTRATIONS + (count || 0));
+      el.setAttribute('data-count', DISPLAY_ATTENDEES);
       el.textContent = display;
     });
   }
 
   function loadRegistrationCount() {
-    fetch(API + '/api/registrations/count')
-      .then(function (res) { return res.json(); })
-      .then(function (data) {
-        updateRegistrationCount(data.count || 0);
-      })
-      .catch(function () {
-        updateRegistrationCount(0);
-      });
+    updateRegistrationCount();
   }
 
   function escapeHtml(str) {
@@ -41,11 +31,9 @@
 
   var speakersData = [];
 
-  function updateSpeakerCount(speakers) {
+  function updateSpeakerCount() {
     var countEl = document.getElementById('hero-speaker-count');
-    if (!countEl) return;
-    var fullSpeakers = speakers.filter(function (s) { return !s.isAnnouncementOnly; });
-    countEl.textContent = fullSpeakers.length || '0';
+    if (countEl) countEl.textContent = String(DISPLAY_SPEAKERS);
   }
 
   function openSpeakerModal(speaker) {
