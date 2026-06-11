@@ -163,6 +163,16 @@
   line-height: 1.5;
 }
 
+.tedx-hero__theme-label {
+  display: block;
+  color: #fff;
+  font-size: clamp(1.85rem, 4.8vw, 3rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.4rem;
+}
+
 .tedx-hero__badge {
   display: inline-flex;
   align-items: center;
@@ -637,6 +647,11 @@
     margin-bottom: 1rem;
   }
 
+  .tedx-hero__theme-label {
+    font-size: clamp(1.5rem, 6.5vw, 2.15rem);
+    margin-bottom: 0.35rem;
+  }
+
   .tedx-hero__title-accent {
     font-size: clamp(2rem, 8.5vw, 2.65rem);
     margin-top: 0.4rem;
@@ -761,6 +776,10 @@
 
   .tedx-hero__theme {
     font-size: 0.88rem;
+  }
+
+  .tedx-hero__theme-label {
+    font-size: clamp(1.35rem, 7vw, 1.9rem);
   }
 
   .tedx-hero__title-accent {
