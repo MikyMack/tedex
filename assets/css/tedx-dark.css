@@ -18,3 +18,45 @@ section {
 .get-in-touch-area {
   background: #0a0a0a !important;
 }
+
+/* Mobile — same hero bg image across all sections */
+@media (max-width: 991.98px) {
+  html {
+    background-color: #0a0a0a;
+  }
+
+  html::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      linear-gradient(to bottom, rgba(10, 10, 10, 0.84) 0%, rgba(10, 10, 10, 0.92) 100%),
+      linear-gradient(to right, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0.65) 48%, rgba(10, 10, 10, 0.45) 100%),
+      url("../images/bg/bg-image-4.jpg") center / cover no-repeat;
+  }
+
+  body {
+    background: transparent !important;
+  }
+
+  section,
+  .tedx-hero,
+  .about-tedx-section,
+  .speakers-section,
+  .about-us-area,
+  .latest-service-area,
+  .tmp-portfolio-area,
+  .education-experience,
+  .our-price-plan-area,
+  .clients-testimonial-area,
+  .blog-and-news-are,
+  .get-in-touch-area,
+  .footer-area,
+  .footer-style-one-wrapper,
+  .copyright-area-one {
+    background: transparent !important;
+    background-color: transparent !important;
+  }
+}
