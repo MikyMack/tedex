@@ -1,4 +1,61 @@
 /* ================================
+   Header — sit above hero (not overlay)
+   ================================ */
+
+.header-one.header--transparent {
+  position: relative;
+  background: #0a0a0a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.header-one.header--transparent.sticky {
+  background: rgba(10, 10, 10, 0.96);
+}
+
+html {
+  scroll-padding-top: 7.5rem;
+}
+
+/* ================================
+   Logo tagline (header)
+   ================================ */
+
+.tedx-logo-link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  text-decoration: none;
+}
+
+.tedx-logo-tagline {
+  display: block;
+  width: max-content;
+  max-width: none;
+  text-align: center;
+  white-space: nowrap;
+  font-size: clamp(0.48rem, 0.95vw, 0.62rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: #fff;
+  text-transform: lowercase;
+}
+
+.tedx-logo-tagline__x {
+  color: #eb0028;
+  font-weight: 700;
+  text-transform: lowercase;
+}
+
+@media only screen and (max-width: 767px) {
+  .tedx-logo-tagline {
+    font-size: 0.42rem;
+    letter-spacing: 0.01em;
+  }
+}
+
+/* ================================
    Speakers — dark theme
    ================================ */
 

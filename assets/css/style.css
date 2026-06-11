@@ -7243,7 +7243,7 @@ ul li {
 p.description {
   font-size: 16px;
   line-height: 28px;
-  font-weight: var(--p-regular);
+  font-weight: 600;
 }
 
 .tmp-link-animation a {

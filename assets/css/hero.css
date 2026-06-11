@@ -4,13 +4,13 @@
 
 .tedx-hero {
   position: relative;
-  min-height: 100vh;
-  min-height: 100dvh;
+  min-height: calc(100vh - 7.5rem);
+  min-height: calc(100dvh - 7.5rem);
   display: flex;
   align-items: center;
   overflow: visible;
   padding: 0 0 4rem;
-  background: #0a0a0a;
+  background: #000000;
 }
 
 .tedx-hero__bg {
@@ -99,7 +99,7 @@
   position: relative;
   z-index: 4;
   width: 100%;
-  padding-top: clamp(5.5rem, 10vh, 7.5rem);
+  padding-top: clamp(2rem, 4vh, 3rem);
 }
 
 .tedx-hero__content-col {
@@ -229,6 +229,7 @@
   line-height: 1.65;
   margin-bottom: 1.75rem;
   max-width: 540px;
+  font-weight: 600;
 }
 
 .tedx-hero__meta {
@@ -526,7 +527,7 @@
 
 @media (min-width: 992px) {
   .tedx-hero__robot {
-    top: -2.5rem;
+    top: 0;
     bottom: 0;
     right: max(0%, calc(50% - 720px));
     width: min(46vw, 640px);
@@ -535,7 +536,7 @@
 
   .tedx-hero__robot img {
     object-position: top center;
-    max-height: calc(100vh + 2.5rem);
+    max-height: 100%;
   }
 
   .tedx-hero__glow {
@@ -554,13 +555,13 @@
 
 @media (min-width: 1200px) {
   .tedx-hero__robot {
-    top: -3rem;
+    top: 0;
     right: max(1rem, calc(50% - 760px));
     width: min(44vw, 680px);
   }
 
   .tedx-hero__robot img {
-    max-height: calc(100vh + 3rem);
+    max-height: 100%;
   }
 }
 
@@ -581,11 +582,11 @@
   }
 
   .tedx-hero__container {
-    padding-top: 5.75rem;
+    padding-top: 2rem;
   }
 
   .tedx-hero__robot {
-    top: 2.5rem;
+    top: 1rem;
     right: -12%;
     width: min(72vw, 340px);
     height: min(58vh, 420px);
@@ -634,11 +635,11 @@
   }
 
   .tedx-hero__container {
-    padding-top: 5.25rem;
+    padding-top: 1.5rem;
   }
 
   .tedx-hero__robot {
-    top: 3.25rem;
+    top: 1.5rem;
     right: -18%;
     width: min(88vw, 300px);
     height: min(52vh, 360px);
