@@ -1,7 +1,138 @@
 /* Site-wide black background overrides */
 
+/* ================================
+   Typography — larger text site-wide
+   ================================ */
+
+:root {
+  --font-size-b1: 17px;
+  --font-size-b2: 20px;
+  --font-size-b3: 24px;
+}
+
+html {
+  font-size: 11px;
+}
+
 body {
   background: #0a0a0a !important;
+  font-size: var(--font-size-b1) !important;
+}
+
+p.description,
+.section-head .description,
+.discription-area .description,
+.edu-para,
+.service-para,
+.service-card-v1 .service-para,
+.service-card-v2 .service-para,
+.card-para,
+.client-para,
+.about-us-section-card .about-us-card .card-para,
+.about-tedx-section .description,
+.about-tedx-quote p,
+.about-tedx-card p,
+.about-tedx-license p,
+.speakers-section .description,
+.get-in-touch-area .description,
+.speaker-modal__bio,
+.testimonial-card .card-content-wrap .card-para,
+.footer-area p.description {
+  font-size: 18px !important;
+  line-height: 1.65 !important;
+}
+
+.section-head .subtitle,
+.section-head .section-sub-title,
+.section-head .section-sub-title span.subtitle,
+.section-head.color-white .section-sub-title {
+  font-size: 17px !important;
+  line-height: 1.5 !important;
+}
+
+.link-title,
+.ft-link li .ft-link-wrap .link-title,
+.about-tedx-meta__item,
+.speaker-card__title,
+.speaker-card__more,
+.speaker-modal__role,
+.speaker-modal__announcement,
+.tedx-map__directions,
+.copy-right-para,
+.copyright-area-one a {
+  font-size: 16px !important;
+}
+
+.ft-link a,
+.ft-link li,
+.ft-link li a,
+.contact-wrap .ft-link li {
+  font-size: 17px !important;
+  line-height: 1.55 !important;
+}
+
+.tmp-mainmenu-nav .tmp-mainmenu > li > a {
+  font-size: 15px !important;
+}
+
+.input-field,
+select.input-field,
+textarea.input-field {
+  font-size: 16px !important;
+}
+
+.tedx-mobile-nav__link {
+  font-size: 0.72rem !important;
+}
+
+@media (max-width: 991.98px) {
+  :root {
+    --font-size-b1: 18px;
+    --font-size-b2: 21px;
+    --font-size-b3: 25px;
+  }
+
+  html {
+    font-size: 11.5px;
+  }
+
+  p.description,
+  .section-head .description,
+  .edu-para,
+  .service-para,
+  .card-para,
+  .client-para,
+  .about-tedx-card p,
+  .speakers-section .description,
+  .get-in-touch-area .description,
+  .speaker-modal__bio {
+    font-size: 18px !important;
+  }
+
+  .link-title,
+  .ft-link li .ft-link-wrap .link-title,
+  .about-tedx-meta__item {
+    font-size: 16px !important;
+  }
+
+  .ft-link a,
+  .ft-link li a {
+    font-size: 17px !important;
+  }
+
+  .tedx-mobile-nav__link {
+    font-size: 0.78rem !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .tedx-mobile-nav__link {
+    font-size: 0.7rem !important;
+  }
+
+  .tedx-mobile-nav__link[data-nav-section="about-tedx"] .tedx-mobile-nav__label {
+    font-size: 0.65rem !important;
+  }
 }
 
 section {

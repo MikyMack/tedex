@@ -111,7 +111,7 @@ html {
 
 .speaker-card__title {
   color: rgba(255, 255, 255, 0.75);
-  font-size: 0.82rem;
+  font-size: 0.95rem;
   line-height: 1.4;
   margin-bottom: 0.65rem;
   display: -webkit-box;
@@ -125,7 +125,7 @@ html {
   align-items: center;
   gap: 0.35rem;
   color: #eb0028;
-  font-size: 0.8rem;
+  font-size: 0.92rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -413,7 +413,7 @@ html {
   background: #141414;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 999px;
-  font-size: 0.88rem;
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.85);
 }
 
@@ -571,7 +571,7 @@ a.about-tedx-meta__item:hover {
   padding: 0.4rem 0.2rem;
   color: #fff;
   text-decoration: none;
-  font-size: 0.62rem;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -603,11 +603,11 @@ a.about-tedx-meta__item:hover {
 
 @media (max-width: 380px) {
   .tedx-mobile-nav__link {
-    font-size: 0.55rem;
+    font-size: 0.68rem;
     letter-spacing: 0.03em;
   }
 
   .tedx-mobile-nav__link[data-nav-section="about-tedx"] .tedx-mobile-nav__label {
-    font-size: 0.5rem;
+    font-size: 0.62rem;
   }
 }
